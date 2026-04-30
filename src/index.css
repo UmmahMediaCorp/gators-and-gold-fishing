@@ -1,0 +1,311 @@
+@import "tailwindcss";
+
+/* ============================================================
+   GATORS & GOLD — DESIGN TOKENS
+   Heritage outfitter / fishing lodge / wilderness adventure.
+   Black + gold (from the badge), lake blue, pine green, copper
+   amber, rust, vintage parchment. NOT editorial fashion.
+   ============================================================ */
+
+@theme {
+  /* Brand palette — pulled from the logo + lake photography */
+  --color-ink: #0c0a08;            /* warm cabin black (background) */
+  --color-ink-2: #14110d;          /* one tone up — section sep */
+  --color-ink-3: #1c1812;          /* card / surface */
+  --color-paper: #f3ead4;          /* vintage parchment cream */
+  --color-bone: #ddd2b8;           /* aged paper / body text on dark */
+  --color-stone: #8b8472;          /* secondary text on dark */
+  --color-mist: #6c6658;           /* tertiary / muted */
+
+  --color-gold: #d4a82c;           /* logo gold (primary accent) */
+  --color-gold-deep: #a07d1c;      /* aged gold (pressed / shadow) */
+  --color-amber: #c87832;          /* sunset / copper */
+  --color-rust: #8b3a1f;           /* rust red — life jackets, lures */
+  --color-pine: #2a3528;           /* forest green */
+  --color-pine-deep: #1a221a;      /* deep pine */
+  --color-lake: #1c3a4d;           /* deep lake blue */
+  --color-sky: #5a7c8b;            /* daylight sky muted */
+
+  --color-rule: rgba(243, 234, 212, 0.14);
+  --color-rule-strong: rgba(243, 234, 212, 0.28);
+
+  /* Typography — heavy condensed display + clean body */
+  --font-display: "Big Shoulders Display", "Impact", "Anton", sans-serif;
+  --font-slab: "Roboto Slab", Georgia, serif;
+  --font-sans: "Inter", -apple-system, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  /* Type scale — bold, blocky, no precious italics */
+  --text-micro: 0.6875rem;     /* 11px */
+  --text-xs: 0.75rem;          /* 12px */
+  --text-sm: 0.8125rem;        /* 13px */
+  --text-base: 1rem;           /* 16px */
+  --text-md: 1.125rem;         /* 18px */
+  --text-lg: 1.5rem;           /* 24px */
+  --text-xl: 2.25rem;          /* 36px */
+  --text-2xl: 3.5rem;          /* 56px */
+  --text-3xl: 5rem;            /* 80px */
+  --text-4xl: 7rem;            /* 112px */
+  --text-display: 12rem;       /* 192px — viewport-filling */
+
+  /* Easing */
+  --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-quart-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-expo-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+
+  /* Spacing */
+  --container: 88rem;
+  --gutter: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+html {
+  scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11", "calt";
+  font-optical-sizing: auto;
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-size: var(--text-base);
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  overscroll-behavior-y: none;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* ============================================================
+   TYPOGRAPHIC PRIMITIVES
+   Big Shoulders Display = blocky, condensed, all-caps power.
+   Used for ALL display type. No italics. No precious moments.
+   ============================================================ */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 100%;
+  letter-spacing: -0.005em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+.font-display.heavy {
+  font-weight: 900;
+  font-stretch: 110%;
+}
+.font-display.thin {
+  font-weight: 500;
+}
+.font-slab {
+  font-family: var(--font-slab);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.font-mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0;
+}
+
+/* Eyebrow — used as a stamp-like meta line */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 500;
+}
+
+/* Stamp — boxed eyebrow, like a passport stamp or trail marker */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--color-gold);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 500;
+}
+.stamp::before,
+.stamp::after {
+  content: "✦";
+  font-size: 0.55rem;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Scroll bar */
+::-webkit-scrollbar { width: 0; height: 0; }
+
+/* ============================================================
+   COMPONENT UTILITIES
+   ============================================================ */
+
+/* Cinematic image grade — kept subtle, photos must feel real */
+.cinematic-img { filter: saturate(1.05) contrast(1.04); }
+
+/* Vignette */
+.vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 30%,
+    rgba(12, 10, 8, 0.35) 70%,
+    rgba(12, 10, 8, 0.85) 100%
+  );
+}
+
+/* Subtle paper grain — adds heritage texture */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.83 0 0 0 0 0.66 0 0 0 0 0.17 0 0 0 0.45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Topo map texture overlay — uses our actual topo image */
+.topo-bg {
+  background-image: url("/images/topo-map.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.06;
+  filter: invert(1);
+}
+
+/* Marquee — heavy and continuous, like a stadium scoreboard */
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-track {
+  animation: marquee 50s linear infinite;
+  will-change: transform;
+}
+
+/* Reveal */
+.reveal-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: 0.95;
+}
+.reveal-inner {
+  display: inline-block;
+  transform: translate3d(0, 110%, 0);
+  transition: transform 1100ms var(--ease-expo-out);
+  will-change: transform;
+}
+.reveal-mask.is-in .reveal-inner {
+  transform: translate3d(0, 0, 0);
+}
+
+/* ============================================================
+   BUTTON — heavy outfitter feel, not magnetic-precious
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1.1rem 1.75rem;
+  border: 2px solid var(--color-gold);
+  background: var(--color-gold);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.92rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 350ms var(--ease-expo-out),
+              color 350ms var(--ease-expo-out),
+              border-color 350ms var(--ease-expo-out),
+              transform 350ms var(--ease-expo-out);
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+.btn:hover {
+  background: var(--color-paper);
+  border-color: var(--color-paper);
+}
+.btn.outline {
+  background: transparent;
+  color: var(--color-gold);
+}
+.btn.outline:hover {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+.btn.dark {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-paper);
+}
+.btn.dark:hover {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-ink);
+}
+
+/* Hairline rule */
+.rule { border-top: 1px solid var(--color-rule); }
+
+/* Container */
+.container-wide {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Section badge — circular gold stamp for hero/CTA */
+.badge-circle {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  line-height: 1.05;
+  padding: 1rem;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-inner { transition: none; transform: none; }
+  .marquee-track { animation: none; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
