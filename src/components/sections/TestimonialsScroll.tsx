@@ -1,14 +1,31 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { testimonials } from "@/lib/content";
+import { testimonials, imagery } from "@/lib/content";
 import { easings } from "@/lib/utils";
 
 export function TestimonialsScroll() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="relative bg-ink py-24 md:py-32 overflow-hidden">
-      <div className="container-wide">
+    <section className="relative py-24 md:py-32 overflow-hidden">
+      {/* Background — bent rod at sunset, very atmospheric */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src={imagery.rodBentSunset}
+          alt=""
+          aria-hidden
+          className="h-full w-full object-cover cinematic-img opacity-30"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(12,10,8,0.95) 0%, rgba(12,10,8,0.7) 30%, rgba(12,10,8,0.7) 70%, rgba(12,10,8,0.95) 100%)",
+          }}
+        />
+      </div>
+
+      <div className="container-wide relative">
         <div className="grid grid-cols-12 gap-6 md:gap-10 mb-12 md:mb-16">
           <div className="col-span-12 md:col-span-3">
             <span className="stamp">No. 06 — Word of Mouth</span>
@@ -22,7 +39,6 @@ export function TestimonialsScroll() {
         </div>
 
         <div className="grid grid-cols-12 gap-6 md:gap-10 items-start">
-          {/* Counter strip — left */}
           <div className="col-span-12 md:col-span-2 flex md:flex-col gap-2">
             {testimonials.map((_, i) => (
               <button
@@ -47,7 +63,6 @@ export function TestimonialsScroll() {
             ))}
           </div>
 
-          {/* Quote — slab heritage style */}
           <div className="col-span-12 md:col-span-10 relative min-h-[18rem]">
             <AnimatePresence mode="wait">
               <motion.blockquote

@@ -1,6 +1,7 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { PageHero } from "@/components/sections/PageHero";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { AtmosphericBreak } from "@/components/sections/AtmosphericBreak";
 import { useReveal } from "@/hooks/useReveal";
 import { imagery, pricing, services, whatToBringIce } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -15,13 +16,29 @@ export default function IceFishing() {
         title="Hard Water"
         accentTitle="Charters."
         subtitle={service.intro}
-        image={imagery.lakeSunset}
+        image={imagery.iceFishingGolden}
         meta="Pending safe ice"
       />
 
-      {/* Method banner */}
-      <section className="bg-ink-2 py-20 md:py-28 border-y border-rule overflow-hidden">
+      {/* Method banner with UTV background */}
+      <section className="relative py-20 md:py-28 border-y border-rule overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <img
+            src={imagery.utvOnIce}
+            alt=""
+            aria-hidden
+            className="h-full w-full object-cover cinematic-img opacity-40"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(12,10,8,0.85) 0%, rgba(12,10,8,0.6) 50%, rgba(12,10,8,0.92) 100%)",
+            }}
+          />
+        </div>
         <div className="absolute inset-0 topo-bg pointer-events-none" />
+
         <div className="container-wide relative grid grid-cols-12 gap-6 md:gap-10">
           <div className="col-span-12 md:col-span-3">
             <span className="stamp">Method</span>
@@ -36,7 +53,7 @@ export default function IceFishing() {
         </div>
       </section>
 
-      {/* 3-step process */}
+      {/* 3-step process — now with imagery */}
       <section className="bg-ink py-24 md:py-32">
         <div className="container-wide">
           <div className="grid grid-cols-12 gap-6 mb-12 md:mb-16">
@@ -61,26 +78,40 @@ export default function IceFishing() {
               num="01"
               title="Find Them"
               body="Forward-facing sonar shows fish 30+ feet away. We drill, drop, and read the screen before we ever set the rod."
+              image={imagery.iceHoleSonar}
               index={0}
             />
             <Step
               num="02"
               title="Chase Them"
               body="When the school slides off, we don't. The heated UTV punches us to the next mark in minutes — not miles of cold."
+              image={imagery.utvOnIce}
               index={1}
             />
             <Step
               num="03"
               title="Land Them"
               body="Insulated tent up. Heater on. Premier rods and species-specific bait. You fish warm. The fish doesn't get a break."
+              image={imagery.iceFishingGolden}
               index={2}
             />
           </div>
         </div>
       </section>
 
+      {/* Atmospheric break — northern lights */}
+      <AtmosphericBreak
+        image={imagery.northernLights}
+        alt="Northern lights over Lac La Biche"
+        stamp="Northern Wilderness"
+        headline="Hard Water."
+        accentLine="True North."
+        height="regular"
+        align="center"
+      />
+
       {/* Pricing */}
-      <section className="bg-ink-2 py-24 md:py-32 border-y border-rule">
+      <section className="bg-ink py-24 md:py-32">
         <div className="container-wide">
           <div className="flex items-end justify-between gap-6 mb-12 flex-wrap">
             <div>
@@ -112,30 +143,35 @@ export default function IceFishing() {
         </div>
       </section>
 
-      {/* What's included / what to bring */}
-      <section className="bg-ink py-24 md:py-32">
-        <div className="container-wide grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-          <div>
-            <h3 className="stamp mb-6">What's included</h3>
-            <ul className="space-y-3">
-              {service.highlights.map((h) => (
-                <li key={h} className="flex items-start gap-3 text-bone leading-relaxed">
-                  <span className="mt-1.5 block h-2 w-2 bg-gold flex-shrink-0" />
-                  {h}
-                </li>
-              ))}
-            </ul>
+      {/* What's included / what to bring with image accent */}
+      <section className="bg-ink-2 py-24 md:py-32 border-y border-rule overflow-hidden">
+        <div className="container-wide grid grid-cols-12 gap-6 md:gap-10">
+          <div className="col-span-12 lg:col-span-4">
+            <FloatingImage src={imagery.iceHoleSonar} caption="Forward-facing sonar · live fish marks" />
           </div>
-          <div>
-            <h3 className="stamp mb-6">What you bring</h3>
-            <ul className="space-y-3">
-              {whatToBringIce.map((h) => (
-                <li key={h} className="flex items-start gap-3 text-bone leading-relaxed">
-                  <span className="mt-1.5 block h-2 w-2 bg-stone flex-shrink-0" />
-                  {h}
-                </li>
-              ))}
-            </ul>
+          <div className="col-span-12 lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+            <div>
+              <h3 className="stamp mb-6">What's included</h3>
+              <ul className="space-y-3">
+                {service.highlights.map((h) => (
+                  <li key={h} className="flex items-start gap-3 text-bone leading-relaxed">
+                    <span className="mt-1.5 block h-2 w-2 bg-gold flex-shrink-0" />
+                    {h}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="stamp mb-6">What you bring</h3>
+              <ul className="space-y-3">
+                {whatToBringIce.map((h) => (
+                  <li key={h} className="flex items-start gap-3 text-bone leading-relaxed">
+                    <span className="mt-1.5 block h-2 w-2 bg-stone flex-shrink-0" />
+                    {h}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -149,11 +185,13 @@ function Step({
   num,
   title,
   body,
+  image,
   index,
 }: {
   num: string;
   title: string;
   body: string;
+  image: string;
   index: number;
 }) {
   const { ref, inView } = useReveal<HTMLDivElement>(0.2);
@@ -161,19 +199,27 @@ function Step({
     <div
       ref={ref}
       className={cn(
-        "bg-ink-2 p-7 md:p-9 flex flex-col gap-6 min-h-[320px]",
+        "group bg-ink-2 flex flex-col overflow-hidden",
         "transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]",
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
       )}
       style={{ transitionDelay: `${index * 120}ms` }}
     >
-      <span className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-gold">
-        Step {num}
-      </span>
-      <h4 className="font-display heavy text-paper text-5xl md:text-6xl leading-none">
-        {title}
-      </h4>
-      <p className="mt-auto text-bone leading-relaxed text-sm">{body}</p>
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className="absolute inset-0 h-full w-full object-cover cinematic-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
+        <span className="absolute top-4 left-4 stamp bg-ink/80">Step {num}</span>
+      </div>
+      <div className="p-7 md:p-9 flex flex-col gap-4 flex-1">
+        <h4 className="font-display heavy text-paper text-4xl md:text-5xl leading-none">
+          {title}
+        </h4>
+        <p className="mt-auto text-bone leading-relaxed text-sm">{body}</p>
+      </div>
     </div>
   );
 }
@@ -211,6 +257,26 @@ function PriceCard({
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+function FloatingImage({ src, caption }: { src: string; caption?: string }) {
+  const { ref, inView } = useReveal<HTMLDivElement>(0.2);
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "relative aspect-[4/5] overflow-hidden border-2 border-gold/30",
+        "transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
+        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
+      )}
+    >
+      <img src={src} alt="" className="absolute inset-0 h-full w-full object-cover cinematic-img" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
+      {caption && (
+        <span className="stamp absolute bottom-4 left-4 bg-ink/80">{caption}</span>
+      )}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { PageShell } from "@/components/layout/PageShell";
-import { brand, faqs, policy, pricing } from "@/lib/content";
+import { AtmosphericBreak } from "@/components/sections/AtmosphericBreak";
+import { brand, faqs, imagery, policy, pricing } from "@/lib/content";
 import { useReveal } from "@/hooks/useReveal";
 import { cn, easings } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -47,7 +48,22 @@ export default function Book() {
     <PageShell title="Book Now — Gators & Gold Fishing">
       {/* Hero */}
       <section className="relative bg-ink overflow-hidden pt-32 pb-12 md:pt-40 grain">
-        <div className="container-wide grid grid-cols-12 gap-6 items-end">
+        <div className="absolute inset-0 -z-10">
+          <img
+            src={imagery.lakeDawnMist}
+            alt=""
+            aria-hidden
+            className="h-full w-full object-cover cinematic-img opacity-30"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(12,10,8,0.85) 0%, rgba(12,10,8,0.7) 50%, rgba(12,10,8,0.95) 100%)",
+            }}
+          />
+        </div>
+        <div className="container-wide relative grid grid-cols-12 gap-6 items-end">
           <div className="col-span-12 lg:col-span-9">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -219,6 +235,17 @@ export default function Book() {
           </aside>
         </div>
       </section>
+
+      {/* Atmospheric break — rod bent at sunset */}
+      <AtmosphericBreak
+        image={imagery.rodBentSunset}
+        alt="Rod bent at sunset"
+        stamp="Once You're Booked"
+        headline="The Lake Does"
+        accentLine="the Rest."
+        height="short"
+        align="center"
+      />
 
       {/* FAQ */}
       <section className="bg-ink-2 py-24 md:py-32 border-t-2 border-gold/30">

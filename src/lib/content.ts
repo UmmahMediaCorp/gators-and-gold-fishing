@@ -217,6 +217,7 @@ export const tripLog = [
     species: "Northern Pike",
     length: "44\"",
     location: "Pinehurst Lake",
+    image: "/images/pike-trophy-yellow.jpg",
   },
   {
     date: "July 14, 2025",
@@ -226,6 +227,7 @@ export const tripLog = [
     species: "Walleye",
     length: "22\"+",
     location: "Lac La Biche",
+    image: "/images/two-generations-walleye.jpg",
   },
   {
     date: "Feb 02, 2025",
@@ -235,6 +237,7 @@ export const tripLog = [
     species: "Walleye",
     length: "26\"",
     location: "Lac La Biche · Hard Water",
+    image: "/images/ice-fishing-golden.jpg",
   },
 ];
 
@@ -262,9 +265,13 @@ export const testimonials = [
   },
 ];
 
-// All imagery is now LOCAL — Rob's actual photography from the live site.
+// All imagery is LOCAL.
+// Real client photography from gatorsandgoldfishing.ca + AI-generated
+// supplemental imagery (Nano Banana 2 / Gemini 3.1 Flash) matched to the
+// brand aesthetic where Rob doesn't yet have his own photo.
 export const imagery = {
   logo: "/images/logo.png",
+  // Real client photography
   hero: "/images/hero-walleye-trophy.jpg",
   pikeYellow: "/images/pike-trophy-yellow.jpg",
   fatherSon: "/images/father-son-walleye-sunset.jpg",
@@ -276,17 +283,34 @@ export const imagery = {
   crestliner: "/images/crestliner-sunset.jpg",
   lakeSunset: "/images/lake-sunset.jpg",
   topo: "/images/topo-map.jpg",
+  // AI-generated atmospheric + ice fishing imagery
+  iceFishingGolden: "/images/ice-fishing-golden.jpg",
+  iceHoleSonar: "/images/ice-hole-sonar.jpg",
+  utvOnIce: "/images/utv-on-ice.jpg",
+  lakeDawnMist: "/images/lake-dawn-mist.jpg",
+  rodBentSunset: "/images/rod-bent-sunset.jpg",
+  vintageTackle: "/images/vintage-tackle.jpg",
+  boatSonar: "/images/boat-sonar-dashboard.jpg",
+  northernLights: "/images/northern-lights.jpg",
 };
 
 export const galleryImages = [
-  { src: imagery.hero,         alt: "Trophy walleye on Lac La Biche",          tag: "Walleye"     },
-  { src: imagery.pikeYellow,   alt: "Massive northern pike, yellow jacket",     tag: "Trophy Pike" },
-  { src: imagery.fatherSon,    alt: "Father and son with sunset walleye",       tag: "Tradition"   },
-  { src: imagery.crestliner,   alt: "Crestliner Fish Hawk at sunset",           tag: "Fleet"       },
-  { src: imagery.walleyeCloudy,alt: "Walleye, overcast morning",                tag: "Walleye"     },
-  { src: imagery.pikeTreeline, alt: "Trophy pike, Lakeland treeline",           tag: "Trophy Pike" },
-  { src: imagery.twoGenerations, alt: "Two generations on the boat",            tag: "Tradition"   },
-  { src: imagery.lakeSunset,   alt: "Sunset on Lac La Biche",                   tag: "Open Water"  },
-  { src: imagery.pikeCamo,     alt: "Pike landed in green jacket",              tag: "Trophy Pike" },
-  { src: imagery.pikeGreen,    alt: "Pike on a clear morning",                  tag: "Trophy Pike" },
+  { src: imagery.hero,             alt: "Trophy walleye on Lac La Biche",         tag: "Walleye"     },
+  { src: imagery.pikeYellow,       alt: "Massive northern pike, yellow jacket",    tag: "Trophy Pike" },
+  { src: imagery.iceFishingGolden, alt: "Ice fishing at golden hour",              tag: "Ice Fishing" },
+  { src: imagery.fatherSon,        alt: "Father and son with sunset walleye",      tag: "Tradition"   },
+  { src: imagery.utvOnIce,         alt: "UTV on the hard water",                   tag: "Ice Fishing" },
+  { src: imagery.crestliner,       alt: "Crestliner Fish Hawk at sunset",          tag: "Fleet"       },
+  { src: imagery.iceHoleSonar,     alt: "Ice hole with sonar flasher",             tag: "Ice Fishing" },
+  { src: imagery.walleyeCloudy,    alt: "Walleye, overcast morning",               tag: "Walleye"     },
+  { src: imagery.pikeTreeline,     alt: "Trophy pike, Lakeland treeline",          tag: "Trophy Pike" },
+  { src: imagery.twoGenerations,   alt: "Two generations on the boat",             tag: "Tradition"   },
+  { src: imagery.lakeSunset,       alt: "Sunset on Lac La Biche",                  tag: "Open Water"  },
+  { src: imagery.lakeDawnMist,     alt: "Lake dawn mist on Lac La Biche",          tag: "Open Water"  },
+  { src: imagery.pikeCamo,         alt: "Pike landed in green jacket",             tag: "Trophy Pike" },
+  { src: imagery.pikeGreen,        alt: "Pike on a clear morning",                 tag: "Trophy Pike" },
+  { src: imagery.rodBentSunset,    alt: "Rod bent at sunset",                      tag: "Open Water"  },
+  { src: imagery.vintageTackle,    alt: "Vintage tackle box of classic lures",     tag: "Gear"        },
+  { src: imagery.northernLights,   alt: "Northern lights over Lac La Biche ice",   tag: "Wilderness"  },
+  { src: imagery.boatSonar,        alt: "Crestliner dashboard with forward-facing sonar", tag: "Fleet" },
 ];

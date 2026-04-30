@@ -1,11 +1,26 @@
-import { trophyStats } from "@/lib/content";
+import { trophyStats, imagery } from "@/lib/content";
 import { useReveal } from "@/hooks/useReveal";
 import { cn } from "@/lib/utils";
 
 export function Numbers() {
   return (
-    <section className="relative bg-pine-deep py-24 md:py-32 border-y-2 border-gold/30 overflow-hidden">
-      {/* Topo bg */}
+    <section className="relative py-24 md:py-32 border-y-2 border-gold/30 overflow-hidden">
+      {/* Background — northern lights for distinctly Canadian wilderness moment */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src={imagery.northernLights}
+          alt=""
+          aria-hidden
+          className="h-full w-full object-cover cinematic-img opacity-35"
+        />
+        <div
+          className="absolute inset-0 bg-pine-deep/85"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(12,10,8,0.85) 0%, rgba(26,34,26,0.92) 50%, rgba(12,10,8,0.95) 100%)",
+          }}
+        />
+      </div>
       <div className="absolute inset-0 topo-bg pointer-events-none" />
 
       <div className="container-wide relative">
@@ -43,7 +58,7 @@ function NumberCell({
     <div
       ref={ref}
       className={cn(
-        "bg-pine-deep p-6 md:p-8 flex flex-col justify-between min-h-[280px]",
+        "bg-ink/85 backdrop-blur-sm p-6 md:p-8 flex flex-col justify-between min-h-[280px]",
         "transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]",
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
       )}

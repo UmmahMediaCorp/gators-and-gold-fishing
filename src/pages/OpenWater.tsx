@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { PageShell } from "@/components/layout/PageShell";
 import { PageHero } from "@/components/sections/PageHero";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { AtmosphericBreak } from "@/components/sections/AtmosphericBreak";
 import { useReveal } from "@/hooks/useReveal";
 import { boat, imagery, pricing, services, whatToBring } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -21,7 +22,7 @@ export default function OpenWater() {
       />
 
       {/* Manifesto */}
-      <section className="bg-ink-2 py-20 md:py-28 border-y border-rule overflow-hidden">
+      <section className="bg-ink-2 py-20 md:py-28 border-y border-rule overflow-hidden relative">
         <div className="absolute inset-0 topo-bg pointer-events-none" />
         <div className="container-wide relative grid grid-cols-12 gap-6 md:gap-10">
           <div className="col-span-12 md:col-span-3">
@@ -42,6 +43,17 @@ export default function OpenWater() {
           </div>
         </div>
       </section>
+
+      {/* Atmospheric break — dawn mist */}
+      <AtmosphericBreak
+        image={imagery.lakeDawnMist}
+        alt="Lac La Biche at dawn"
+        stamp="0:5:30 — Pre-Launch"
+        headline="The Best Bite"
+        accentLine="Belongs to the Early."
+        height="regular"
+        align="left"
+      />
 
       {/* Pricing */}
       <section className="bg-ink py-24 md:py-32">
@@ -76,55 +88,63 @@ export default function OpenWater() {
         </div>
       </section>
 
-      {/* Boat */}
+      {/* Boat showcase + sonar dashboard */}
       <section className="bg-ink-2 py-24 md:py-32 border-y border-rule overflow-hidden">
-        <div className="container-wide grid grid-cols-12 gap-6 md:gap-10 items-center">
-          <div className="col-span-12 lg:col-span-7">
-            <span className="stamp mb-4">The Vessel</span>
-            <h2 className="mt-4 font-display heavy text-paper leading-[0.9] text-[clamp(2.25rem,6vw,5.5rem)]">
-              <span className="block">Crestliner.</span>
-              <span className="block text-gold">Built for the Chase.</span>
-            </h2>
-            <p className="mt-8 max-w-xl text-bone leading-relaxed">
-              The 2026 Crestliner 1850 Fish Hawk — wide deck, soft ride, dialled
-              electronics. A 200-horse Mercury 4-stroke gets you from lily pad
-              to weed edge in minutes.
-            </p>
+        <div className="container-wide">
+          <div className="grid grid-cols-12 gap-6 md:gap-10 items-center">
+            <div className="col-span-12 lg:col-span-7">
+              <span className="stamp mb-4">The Vessel</span>
+              <h2 className="mt-4 font-display heavy text-paper leading-[0.9] text-[clamp(2.25rem,6vw,5.5rem)]">
+                <span className="block">Crestliner.</span>
+                <span className="block text-gold">Built for the Chase.</span>
+              </h2>
+              <p className="mt-8 max-w-xl text-bone leading-relaxed">
+                The 2026 Crestliner 1850 Fish Hawk — wide deck, soft ride, dialled
+                electronics. A 200-horse Mercury 4-stroke gets you from lily pad
+                to weed edge in minutes.
+              </p>
 
-            <dl className="mt-10 grid grid-cols-2 gap-px bg-gold/30 max-w-xl">
-              <Spec label="Hull" value={boat.model} />
-              <Spec label="Power" value={boat.motor} />
-              <Spec label="Electronics" value={boat.electronics} />
-              <Spec label="Capacity" value={boat.capacity} />
-            </dl>
+              <dl className="mt-10 grid grid-cols-2 gap-px bg-gold/30 max-w-xl">
+                <Spec label="Hull" value={boat.model} />
+                <Spec label="Power" value={boat.motor} />
+                <Spec label="Electronics" value={boat.electronics} />
+                <Spec label="Capacity" value={boat.capacity} />
+              </dl>
+            </div>
+            <div className="col-span-12 lg:col-span-5">
+              <BoatVisual src={imagery.crestliner} caption="2026 Fish Hawk · 200hp Mercury" />
+            </div>
           </div>
-          <div className="col-span-12 lg:col-span-5">
-            <BoatVisual src={imagery.crestliner} caption="2026 Fish Hawk · 200hp Mercury" />
-          </div>
-        </div>
 
-        <div className="container-wide mt-16 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-          <div>
-            <h3 className="stamp mb-6">What's included</h3>
-            <ul className="space-y-3">
-              {service.highlights.map((h) => (
-                <li key={h} className="flex items-start gap-3 text-bone leading-relaxed">
-                  <span className="mt-1.5 block h-2 w-2 bg-gold flex-shrink-0" />
-                  {h}
-                </li>
-              ))}
-            </ul>
+          {/* Two-up: sonar dashboard + tackle */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <BoatVisual src={imagery.boatSonar} caption="Forward-facing sonar · live fish marks" aspect="aspect-[16/10]" />
+            <BoatVisual src={imagery.vintageTackle} caption="Premier rods, reels & specialized bait" aspect="aspect-[16/10]" />
           </div>
-          <div>
-            <h3 className="stamp mb-6">What you bring</h3>
-            <ul className="space-y-3">
-              {whatToBring.map((h) => (
-                <li key={h} className="flex items-start gap-3 text-bone leading-relaxed">
-                  <span className="mt-1.5 block h-2 w-2 bg-stone flex-shrink-0" />
-                  {h}
-                </li>
-              ))}
-            </ul>
+
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+            <div>
+              <h3 className="stamp mb-6">What's included</h3>
+              <ul className="space-y-3">
+                {service.highlights.map((h) => (
+                  <li key={h} className="flex items-start gap-3 text-bone leading-relaxed">
+                    <span className="mt-1.5 block h-2 w-2 bg-gold flex-shrink-0" />
+                    {h}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="stamp mb-6">What you bring</h3>
+              <ul className="space-y-3">
+                {whatToBring.map((h) => (
+                  <li key={h} className="flex items-start gap-3 text-bone leading-relaxed">
+                    <span className="mt-1.5 block h-2 w-2 bg-stone flex-shrink-0" />
+                    {h}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -209,13 +229,22 @@ function PriceCard({
   );
 }
 
-function BoatVisual({ src, caption }: { src: string; caption?: string }) {
+function BoatVisual({
+  src,
+  caption,
+  aspect = "aspect-[4/3]",
+}: {
+  src: string;
+  caption?: string;
+  aspect?: string;
+}) {
   const { ref, inView } = useReveal<HTMLDivElement>(0.2);
   return (
     <div
       ref={ref}
       className={cn(
-        "relative aspect-[4/3] overflow-hidden border-2 border-gold/30",
+        "relative overflow-hidden border-2 border-gold/30",
+        aspect,
         "transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
       )}

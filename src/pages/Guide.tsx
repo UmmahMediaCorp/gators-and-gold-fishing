@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { PageShell } from "@/components/layout/PageShell";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { AtmosphericBreak } from "@/components/sections/AtmosphericBreak";
 import { useReveal } from "@/hooks/useReveal";
 import { brand, guide, imagery } from "@/lib/content";
 import { motion } from "framer-motion";
@@ -9,7 +10,7 @@ import { easings, cn } from "@/lib/utils";
 export default function Guide() {
   return (
     <PageShell title="Your Guide — Rob Clarke · Gators & Gold">
-      {/* Editorial portrait hero — bold, blocky, no italic */}
+      {/* Editorial portrait hero */}
       <section className="relative bg-ink overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24 grain">
         <div className="container-wide grid grid-cols-12 gap-6 md:gap-10 items-end">
           <div className="col-span-12 lg:col-span-7 order-2 lg:order-1">
@@ -97,7 +98,18 @@ export default function Guide() {
         </div>
       </section>
 
-      {/* Pull quotes — slab heritage, no italic */}
+      {/* Atmospheric break — vintage tackle / heritage */}
+      <AtmosphericBreak
+        image={imagery.vintageTackle}
+        alt="Vintage tackle from Rob's box"
+        stamp="The Tools of the Trade"
+        headline="Three Decades."
+        accentLine="Same Lake. Same Mission."
+        height="short"
+        align="left"
+      />
+
+      {/* Pull quotes */}
       <section className="bg-ink py-24 md:py-32 overflow-hidden">
         <div className="container-wide space-y-20 md:space-y-24">
           {guide.quotes.map((quote, i) => (
@@ -126,6 +138,17 @@ export default function Guide() {
           </div>
         </div>
       </section>
+
+      {/* Atmospheric break — rod bent at sunset */}
+      <AtmosphericBreak
+        image={imagery.rodBentSunset}
+        alt="Rod bent at sunset"
+        stamp="See You at the Launch"
+        headline="The Boat."
+        accentLine="The Bait. The Bite."
+        height="regular"
+        align="right"
+      />
 
       {/* Call to action */}
       <section className="bg-ink py-24 md:py-32">
