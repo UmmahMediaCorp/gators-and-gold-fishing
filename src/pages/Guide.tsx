@@ -62,7 +62,7 @@ export default function Guide() {
               className="relative aspect-[4/5] overflow-hidden border-2 border-gold/30"
             >
               <img
-                src={imagery.pikeCamo}
+                src={imagery.yamahaPike}
                 alt="Rob Clarke on Lac La Biche"
                 className="absolute inset-0 h-full w-full object-cover cinematic-img"
               />

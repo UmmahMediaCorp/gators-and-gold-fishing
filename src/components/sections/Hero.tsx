@@ -5,11 +5,16 @@ import { brand, imagery } from "@/lib/content";
 import { easings } from "@/lib/utils";
 
 // Cycling background photos — fishing as the main attraction.
+// Mix of real trophy moments + cinematic action shots.
 const HERO_PHOTOS = [
   imagery.hero,
-  imagery.pikeYellow,
+  imagery.womanTrophyPike,
+  imagery.pikeStrike,
+  imagery.iceWalleyeTrophy,
   imagery.fatherSon,
-  imagery.iceFishingGolden,
+  imagery.underwaterWalleye,
+  imagery.familyIceWalleye,
+  imagery.pikeYellow,
 ];
 
 export function Hero() {

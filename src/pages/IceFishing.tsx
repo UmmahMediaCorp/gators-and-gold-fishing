@@ -17,15 +17,15 @@ export default function IceFishing() {
         title="Hard Water"
         accentTitle="Charters."
         subtitle={service.intro}
-        image={imagery.iceFishingGolden}
+        image={imagery.iceWalleyeTrophy}
         meta="Pending safe ice"
       />
 
-      {/* Method banner with UTV background */}
+      {/* Method banner with REAL CFMOTO UTV background */}
       <section className="relative py-20 md:py-28 border-y border-rule overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <img
-            src={imagery.utvOnIce}
+            src={imagery.cfmotoUTV}
             alt=""
             aria-hidden
             className="h-full w-full object-cover cinematic-img opacity-40"
@@ -85,15 +85,15 @@ export default function IceFishing() {
             <Step
               num="02"
               title="Chase Them"
-              body="When the school slides off, we don't. The heated UTV punches us to the next mark in minutes — not miles of cold."
-              image={imagery.utvOnIce}
+              body="When the school slides off, we don't. The heated CFMOTO UTV punches us to the next mark in minutes — not miles of cold."
+              image={imagery.cfmotoUTV}
               index={1}
             />
             <Step
               num="03"
               title="Land Them"
               body="Insulated tent up. Heater on. Premier rods and species-specific bait. You fish warm. The fish doesn't get a break."
-              image={imagery.iceFishingGolden}
+              image={imagery.iceWalleyeBlizzard}
               index={2}
             />
           </div>
@@ -156,7 +156,7 @@ export default function IceFishing() {
       <section className="bg-ink-2 py-24 md:py-32 border-y border-rule overflow-hidden">
         <div className="container-wide grid grid-cols-12 gap-6 md:gap-10">
           <div className="col-span-12 lg:col-span-4">
-            <FloatingImage src={imagery.iceHoleSonar} caption="Forward-facing sonar · live fish marks" />
+            <FloatingImage src={imagery.familyIceWalleye} caption="Kids under 16 fish FREE with a paying adult" />
           </div>
           <div className="col-span-12 lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
             <div>

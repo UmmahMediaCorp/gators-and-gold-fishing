@@ -18,7 +18,7 @@ export default function OpenWater() {
         title="Open Water"
         accentTitle="Charters."
         subtitle={service.intro}
-        image={imagery.fatherSon}
+        image={imagery.womanTrophyPike}
         meta="Lac La Biche · Pinehurst"
       />
 
@@ -53,13 +53,13 @@ export default function OpenWater() {
         copy="Walleye, pike, and the days that produced them. Swipe through the recent open-water trophies."
       />
 
-      {/* Atmospheric break — dawn mist */}
+      {/* Action break — pike strike */}
       <AtmosphericBreak
-        image={imagery.lakeDawnMist}
-        alt="Lac La Biche at dawn"
-        stamp="0:5:30 — Pre-Launch"
-        headline="The Best Bite"
-        accentLine="Belongs to the Early."
+        image={imagery.pikeStrike}
+        alt="Pike strike at the boat side"
+        stamp="When It Connects"
+        headline="The Strike."
+        accentLine="Then the Fight."
         height="regular"
         align="left"
       />
@@ -157,6 +157,17 @@ export default function OpenWater() {
           </div>
         </div>
       </section>
+
+      {/* Shore lunch — the tradition */}
+      <AtmosphericBreak
+        image={imagery.shoreLunch}
+        alt="Shore lunch over the campfire"
+        stamp="Optional"
+        headline="Shore Lunch."
+        accentLine="Add It to the Day."
+        height="short"
+        align="center"
+      />
 
       {/* Pinehurst trophy hunt */}
       <section className="relative bg-ink py-24 md:py-32 overflow-hidden">

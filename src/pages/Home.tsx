@@ -27,13 +27,13 @@ export default function Home() {
 
       <Promise />
 
-      {/* Atmospheric break — dawn mist on the lake */}
+      {/* Atmospheric break — boat tied at dock, first light */}
       <AtmosphericBreak
-        image={imagery.lakeDawnMist}
-        alt="Lac La Biche at dawn"
-        stamp="0:5:47 — First Light"
-        headline="From Dawn"
-        accentLine="to Dark."
+        image={imagery.dockFirstLight}
+        alt="Boat tied at the dock at first light"
+        stamp="0:5:47 — Pre-Launch"
+        headline="The Day Begins"
+        accentLine="Before the Sun Does."
         height="regular"
         align="left"
       />
@@ -54,6 +54,18 @@ export default function Home() {
 
       <GuidePreview />
       <FieldNotes />
+
+      {/* Shore lunch atmospheric break */}
+      <AtmosphericBreak
+        image={imagery.shoreLunch}
+        alt="Shore lunch over the campfire"
+        stamp="The Tradition"
+        headline="Shore Lunch."
+        accentLine="The Day's Real Trophy."
+        height="short"
+        align="right"
+      />
+
       <TestimonialsScroll />
       <GalleryStrip />
       <FinalCTA />
