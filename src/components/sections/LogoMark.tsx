@@ -26,7 +26,8 @@ export function LogoMark() {
       <div className="absolute inset-x-0 top-[88px] md:top-0 h-[3px] bg-ink" />
       <div className="absolute inset-x-0 bottom-0 h-[3px] bg-ink" />
 
-      <div className="container-wide relative py-14 md:py-28 lg:py-32">
+      <div className="container-wide relative py-14 md:py-28 lg:py-32" data-version="v3-mobile-first">
+
         {/* Top crossbar — coordinate stamps */}
         <motion.div
           initial={{ opacity: 0, y: -8 }}
