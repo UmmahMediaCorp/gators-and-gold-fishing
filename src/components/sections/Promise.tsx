@@ -13,13 +13,13 @@ export function Promise() {
         {/* Heading first on mobile */}
         <div className="grid grid-cols-12 gap-4 md:gap-10 mb-10 md:mb-16">
           <div className="col-span-12 md:col-span-3">
-            <span className="stamp">No. 01 — The Charter</span>
+            <span className="stamp">No. 01 — The Year</span>
           </div>
           <div className="col-span-12 md:col-span-9">
-            <h2 className="font-display heavy text-paper leading-[0.9] text-[clamp(2.25rem,7.5vw,7rem)]">
-              <span className="block">Real Boat.</span>
-              <span className="block text-gold">Real Guide.</span>
-              <span className="block">Real Trophies.</span>
+            <h2 className="font-display heavy text-paper leading-[0.9] text-[clamp(2.25rem,7vw,6.5rem)]">
+              <span className="block">Spring Spawn,</span>
+              <span className="block text-gold">Fall Turnover,</span>
+              <span className="block">Hard Water in Between.</span>
             </h2>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { Hero } from "@/components/sections/Hero";
+import { LogoMark } from "@/components/sections/LogoMark";
 import { TrophyReel } from "@/components/sections/TrophyReel";
 import { Promise } from "@/components/sections/Promise";
 import { Seasons } from "@/components/sections/Seasons";
@@ -17,7 +18,10 @@ export default function Home() {
     <PageShell title="Gators & Gold Fishing Charters — Lac La Biche">
       <Hero />
 
-      {/* Trophy reel — fishing as the main attraction, right after the logo hero */}
+      {/* The Mark — featured badge section, cream contrast break */}
+      <LogoMark />
+
+      {/* Trophy reel — fishing as the main attraction */}
       <TrophyReel
         stamp="The Wall · Recent Trophies"
         headline="The Catches"
