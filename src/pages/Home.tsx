@@ -16,10 +16,22 @@ import { imagery } from "@/lib/content";
 export default function Home() {
   return (
     <PageShell title="Gators & Gold Fishing Charters — Lac La Biche">
-      <Hero />
+      {/*
+        On mobile: lead with the cream LogoMark (the badge is the first
+        thing visitors see). On desktop (md+): keep the photo-cycle Hero
+        as the entry, with LogoMark below it.
 
-      {/* The Mark — featured badge section, cream contrast break */}
-      <LogoMark />
+        Implemented with CSS order on a flex container so we ship the
+        same DOM and let the breakpoint decide visual order.
+      */}
+      <div className="flex flex-col">
+        <div className="order-2 md:order-1">
+          <Hero />
+        </div>
+        <div className="order-1 md:order-2">
+          <LogoMark />
+        </div>
+      </div>
 
       {/* Trophy reel — fishing as the main attraction */}
       <TrophyReel

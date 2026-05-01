@@ -12,7 +12,7 @@ export function LogoMark() {
   const { ref, inView } = useReveal<HTMLDivElement>(0.2);
 
   return (
-    <section className="relative overflow-hidden bg-paper text-ink">
+    <section className="relative overflow-hidden bg-paper text-ink pt-[88px] md:pt-0">
       {/* Subtle topographic line texture */}
       <div
         className="absolute inset-0 opacity-[0.18] pointer-events-none"
@@ -23,7 +23,7 @@ export function LogoMark() {
         }}
       />
       {/* Top + bottom hairlines */}
-      <div className="absolute inset-x-0 top-0 h-[3px] bg-ink" />
+      <div className="absolute inset-x-0 top-[88px] md:top-0 h-[3px] bg-ink" />
       <div className="absolute inset-x-0 bottom-0 h-[3px] bg-ink" />
 
       <div className="container-wide relative py-14 md:py-28 lg:py-32">
