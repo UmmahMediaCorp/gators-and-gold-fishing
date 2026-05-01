@@ -1,133 +1,163 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { useEffect, useState } from "react";
 import { brand, imagery } from "@/lib/content";
 import { easings } from "@/lib/utils";
 
+// Cycling background photos — fishing as the main attraction.
+const HERO_PHOTOS = [
+  imagery.hero,
+  imagery.pikeYellow,
+  imagery.fatherSon,
+  imagery.iceFishingGolden,
+];
+
 export function Hero() {
-  const [scrolled, setScrolled] = useState(0);
+  const [activePhoto, setActivePhoto] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(Math.min(window.scrollY, window.innerHeight));
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const id = setInterval(() => {
+      setActivePhoto((p) => (p + 1) % HERO_PHOTOS.length);
+    }, 5500);
+    return () => clearInterval(id);
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-ink grain pt-[88px] md:pt-[96px]">
-      {/* Background — real trophy walleye photograph, parallax */}
-      <motion.div
-        className="absolute inset-0 -z-10"
-        style={{
-          transform: `translate3d(0, ${scrolled * 0.25}px, 0) scale(${1 + scrolled * 0.0003})`,
-        }}
-      >
-        <img
-          src={imagery.hero}
-          alt=""
-          aria-hidden
-          className="h-full w-full object-cover object-[center_30%]"
-        />
-        {/* Heavy gradient — bottom darker so type holds; top dark so nav blends */}
+    <section className="relative min-h-[100svh] w-full overflow-hidden bg-ink grain pt-[80px] md:pt-[96px]">
+      {/* Cycling photo background */}
+      <div className="absolute inset-0 -z-10">
+        <AnimatePresence mode="sync">
+          <motion.img
+            key={activePhoto}
+            src={HERO_PHOTOS[activePhoto]}
+            alt=""
+            aria-hidden
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1 }}
+            transition={{ duration: 1.6, ease: easings.expoOut }}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        </AnimatePresence>
+        {/* Strong gradient — logo and CTAs need to read clearly */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(12,10,8,0.7) 0%, rgba(12,10,8,0.25) 22%, rgba(12,10,8,0.4) 60%, rgba(12,10,8,0.95) 100%)",
+              "linear-gradient(180deg, rgba(12,10,8,0.65) 0%, rgba(12,10,8,0.55) 30%, rgba(12,10,8,0.4) 55%, rgba(12,10,8,0.92) 100%)",
           }}
         />
-        {/* Color grade — warm cabin amber tint */}
+        {/* Side darkening for legibility */}
         <div
-          className="absolute inset-0 mix-blend-overlay opacity-30"
+          className="absolute inset-0 hidden md:block"
           style={{
             background:
-              "linear-gradient(180deg, rgba(212,168,44,0.15), transparent 40%, rgba(28,58,77,0.2))",
+              "linear-gradient(90deg, rgba(12,10,8,0.55), rgba(12,10,8,0) 35%, rgba(12,10,8,0) 65%, rgba(12,10,8,0.45))",
           }}
         />
-      </motion.div>
+      </div>
 
-      <div className="container-wide relative z-10 flex flex-col justify-end min-h-[calc(100vh-88px)] pb-12 md:pb-20">
-        {/* Stamp row */}
+      <div className="container-wide relative z-10 flex flex-col min-h-[calc(100svh-80px)] md:min-h-[calc(100svh-96px)]">
+        {/* Top stamp row */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: easings.expoOut }}
-          className="flex items-center gap-3 mb-6 md:mb-10"
+          transition={{ duration: 0.9, delay: 0.2, ease: easings.expoOut }}
+          className="flex items-center gap-2 flex-wrap pt-4 md:pt-6"
         >
           <span className="stamp">Est. 1994</span>
-          <span className="stamp">N 54.7666° / W 111.9683°</span>
-          <span className="stamp hidden md:inline-flex">Trophy Class</span>
+          <span className="stamp hidden sm:inline-flex">N 54.7666° / W 111.9683°</span>
+          <span className="stamp ml-auto">2026 Season Open</span>
         </motion.div>
 
-        {/* Massive blocky banner — the signature moment */}
-        <h1 className="font-display text-paper leading-[0.85]">
-          <motion.span
-            initial={{ y: "110%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1.1, delay: 0.5, ease: easings.expoOut }}
-            className="block text-[clamp(4.5rem,16vw,16rem)] font-black"
-            style={{ fontStretch: "115%" }}
+        {/* Centered logo + content */}
+        <div className="flex-1 flex flex-col items-center justify-center text-center py-8 md:py-12">
+          {/* THE BADGE — the brand DNA, hero of the hero */}
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1.4, delay: 0.4, ease: easings.expoOut }}
+            className="relative"
           >
-            Trophy Pike
-          </motion.span>
-          <motion.span
-            initial={{ y: "110%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1.1, delay: 0.65, ease: easings.expoOut }}
-            className="block text-[clamp(4.5rem,16vw,16rem)] font-black -mt-2 md:-mt-4 text-gold"
-            style={{ fontStretch: "115%" }}
-          >
-            &amp; Walleye.
-          </motion.span>
-        </h1>
+            <img
+              src={imagery.logo}
+              alt="Gators & Gold Fishing Charters"
+              className="block w-[260px] sm:w-[300px] md:w-[340px] lg:w-[360px] h-auto drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)]"
+            />
+          </motion.div>
 
-        {/* Sub band — promise + meta */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.0, delay: 0.95, ease: easings.expoOut }}
-          className="mt-10 grid grid-cols-12 gap-6 items-end pt-8 border-t-2 border-gold/40"
-        >
-          <p className="col-span-12 lg:col-span-6 text-bone text-md md:text-lg leading-[1.55]">
+          {/* Tagline below logo */}
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.95, ease: easings.expoOut }}
+            className="mt-6 md:mt-8 font-display heavy text-paper text-3xl sm:text-4xl md:text-5xl leading-[0.95] max-w-3xl"
+          >
+            Trophy Pike <span className="text-gold">&amp;</span> Walleye.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.05, ease: easings.expoOut }}
+            className="mt-3 md:mt-4 font-mono text-xs md:text-sm uppercase tracking-[0.22em] text-gold"
+          >
+            Lac La Biche · Pinehurst Lake · Alberta
+          </motion.p>
+
+          {/* Promise */}
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.15, ease: easings.expoOut }}
+            className="mt-6 md:mt-8 max-w-xl text-bone text-sm md:text-md leading-[1.6]"
+          >
             {brand.promise}
-          </p>
-          <div className="col-span-12 lg:col-span-3 lg:col-start-8 flex flex-col gap-3">
-            <Link href="/book" className="btn">
-              Book a Charter →
-            </Link>
-            <Link href="/your-guide" className="btn outline">
-              Meet Rob
-            </Link>
-          </div>
-          <div className="col-span-12 lg:col-span-2 lg:text-right">
-            <span className="block font-mono text-[0.6rem] uppercase tracking-[0.22em] text-stone">
-              Open Water
-            </span>
-            <span className="block font-display text-2xl font-extrabold text-paper mt-1">
-              MAY — OCT
-            </span>
-            <span className="block font-mono text-[0.6rem] uppercase tracking-[0.22em] text-stone mt-3">
-              Hard Water
-            </span>
-            <span className="block font-display text-2xl font-extrabold text-paper mt-1">
-              DEC — MAR
-            </span>
-          </div>
-        </motion.div>
+          </motion.p>
 
-        {/* Trophy stat strip — like a nat-park welcome sign */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2, ease: easings.expoOut }}
-          className="mt-10 grid grid-cols-4 gap-px bg-gold/20"
-        >
-          <Stat figure="40&quot;+" label="Trophy Pike" />
-          <Stat figure="28&quot;+" label="Class Walleye" />
-          <Stat figure="30+" label="Years guiding" />
-          <Stat figure="200hp" label="Crestliner" />
-        </motion.div>
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.3, ease: easings.expoOut }}
+            className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-3 w-full sm:w-auto max-w-sm sm:max-w-none"
+          >
+            <Link href="/book" className="btn">Book a Charter →</Link>
+            <Link href="/your-guide" className="btn outline">Meet Rob</Link>
+          </motion.div>
+        </div>
+
+        {/* Bottom — photo cycle indicator + stats strip */}
+        <div className="pb-6 md:pb-10">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.5, ease: easings.expoOut }}
+            className="flex items-center justify-center gap-2 mb-4 md:mb-6"
+          >
+            {HERO_PHOTOS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActivePhoto(i)}
+                aria-label={`Show hero photo ${i + 1}`}
+                className={`block h-[3px] transition-all duration-500 ${
+                  activePhoto === i ? "w-10 bg-gold" : "w-4 bg-stone/50 hover:bg-stone"
+                }`}
+              />
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.4, ease: easings.expoOut }}
+            className="grid grid-cols-4 gap-px bg-gold/30"
+          >
+            <Stat figure="40&quot;+" label="Trophy Pike" />
+            <Stat figure="28&quot;+" label="Walleye" />
+            <Stat figure="30+" label="Years" />
+            <Stat figure="200hp" label="Crestliner" />
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -135,9 +165,12 @@ export function Hero() {
 
 function Stat({ figure, label }: { figure: string; label: string }) {
   return (
-    <div className="bg-ink/80 backdrop-blur-sm px-4 py-4 md:px-6 md:py-5 flex flex-col">
-      <span className="font-display text-3xl md:text-5xl font-black text-paper leading-none" dangerouslySetInnerHTML={{ __html: figure }} />
-      <span className="mt-1.5 md:mt-2 font-mono text-[0.6rem] md:text-[0.65rem] uppercase tracking-[0.18em] text-gold">
+    <div className="bg-ink/85 backdrop-blur-sm px-3 py-3 md:px-5 md:py-4 flex flex-col items-center text-center">
+      <span
+        className="font-display heavy text-paper text-xl sm:text-2xl md:text-4xl leading-none"
+        dangerouslySetInnerHTML={{ __html: figure }}
+      />
+      <span className="mt-1 md:mt-1.5 font-mono text-[0.55rem] md:text-[0.65rem] uppercase tracking-[0.18em] text-gold">
         {label}
       </span>
     </div>

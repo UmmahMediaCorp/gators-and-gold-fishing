@@ -248,6 +248,7 @@ export const testimonials = [
     author: "Mark D.",
     location: "Edmonton, AB",
     species: "Walleye",
+    image: "/images/two-generations-walleye.jpg",
   },
   {
     quote:
@@ -255,6 +256,7 @@ export const testimonials = [
     author: "Ben H.",
     location: "Calgary, AB",
     species: "Pike",
+    image: "/images/pike-trophy-yellow.jpg",
   },
   {
     quote:
@@ -262,6 +264,7 @@ export const testimonials = [
     author: "The Reilly Family",
     location: "Sherwood Park, AB",
     species: "Ice",
+    image: "/images/ice-fishing-golden.jpg",
   },
 ];
 
@@ -292,6 +295,27 @@ export const imagery = {
   vintageTackle: "/images/vintage-tackle.jpg",
   boatSonar: "/images/boat-sonar-dashboard.jpg",
   northernLights: "/images/northern-lights.jpg",
+};
+
+// Trophy reel — curated catch photos for the horizontal-scrolling hero strip.
+// Each card surfaces a real catch with its size and species.
+export const trophyReel = [
+  { src: imagery.hero,             species: "Walleye",       size: "Trophy Class", location: "Lac La Biche" },
+  { src: imagery.pikeYellow,       species: "Northern Pike", size: "44\"",          location: "Pinehurst Lake" },
+  { src: imagery.fatherSon,        species: "Walleye",       size: "Class 28\"+",   location: "Lac La Biche" },
+  { src: imagery.pikeTreeline,     species: "Northern Pike", size: "40\"+",         location: "Lakeland" },
+  { src: imagery.walleyeCloudy,    species: "Walleye",       size: "Eater",         location: "Lac La Biche" },
+  { src: imagery.iceFishingGolden, species: "Hard Water",    size: "Mar 2025",      location: "Lac La Biche" },
+  { src: imagery.pikeCamo,         species: "Northern Pike", size: "Class 40\"+",   location: "Lac La Biche" },
+  { src: imagery.twoGenerations,   species: "Two Anglers",   size: "First Trophy",  location: "Lac La Biche" },
+];
+
+// Per-stat imagery for the Numbers grid (mobile visual punch).
+export const trophyStatsImagery: Record<string, string> = {
+  "Trophy Pike": imagery.pikeYellow,
+  "Class Walleye": imagery.hero,
+  "Years on Water": imagery.pikeCamo,
+  "Mercury 4-Stroke": imagery.crestliner,
 };
 
 export const galleryImages = [

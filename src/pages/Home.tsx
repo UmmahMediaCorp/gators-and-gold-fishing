@@ -1,5 +1,6 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { Hero } from "@/components/sections/Hero";
+import { TrophyReel } from "@/components/sections/TrophyReel";
 import { Promise } from "@/components/sections/Promise";
 import { Seasons } from "@/components/sections/Seasons";
 import { Numbers } from "@/components/sections/Numbers";
@@ -15,6 +16,15 @@ export default function Home() {
   return (
     <PageShell title="Gators & Gold Fishing Charters — Lac La Biche">
       <Hero />
+
+      {/* Trophy reel — fishing as the main attraction, right after the logo hero */}
+      <TrophyReel
+        stamp="The Wall · Recent Trophies"
+        headline="The Catches"
+        accentLine="Speak for Themselves."
+        copy="Real anglers, real fish, real days on Lac La Biche & Pinehurst. Swipe through some of the trophies that came aboard the Crestliner."
+      />
+
       <Promise />
 
       {/* Atmospheric break — dawn mist on the lake */}

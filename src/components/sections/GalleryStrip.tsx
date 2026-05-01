@@ -7,12 +7,12 @@ export function GalleryStrip() {
   const preview = galleryImages.slice(0, 6);
 
   return (
-    <section className="relative bg-ink-2 py-24 md:py-32 border-y border-rule overflow-hidden">
+    <section className="relative bg-ink-2 py-16 md:py-32 border-y border-rule overflow-hidden">
       <div className="container-wide">
-        <div className="grid grid-cols-12 gap-6 mb-12 md:mb-16 items-end">
+        <div className="grid grid-cols-12 gap-4 md:gap-6 mb-8 md:mb-16 items-end">
           <div className="col-span-12 md:col-span-7">
-            <span className="stamp mb-4">No. 07 — The Wall</span>
-            <h2 className="mt-4 font-display heavy text-paper leading-[0.9] text-[clamp(2.25rem,5.5vw,5rem)]">
+            <span className="stamp mb-3">No. 07 — The Wall</span>
+            <h2 className="mt-3 md:mt-4 font-display heavy text-paper leading-[0.9] text-[clamp(2.25rem,5.5vw,5rem)]">
               <span className="block">The Catches.</span>
               <span className="block text-gold">The Smiles.</span>
             </h2>
@@ -24,7 +24,7 @@ export function GalleryStrip() {
           </div>
         </div>
 
-        <div className="grid grid-cols-12 grid-rows-[auto_auto] gap-3 md:gap-4">
+        <div className="grid grid-cols-12 grid-rows-[auto_auto] gap-2 md:gap-4">
           {preview.map((img, i) => (
             <GalleryTile
               key={img.src}

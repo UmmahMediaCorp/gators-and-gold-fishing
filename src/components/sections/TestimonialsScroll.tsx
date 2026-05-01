@@ -5,16 +5,17 @@ import { easings } from "@/lib/utils";
 
 export function TestimonialsScroll() {
   const [active, setActive] = useState(0);
+  const t = testimonials[active];
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      {/* Background — bent rod at sunset, very atmospheric */}
+    <section className="relative py-16 md:py-32 overflow-hidden">
+      {/* Background — bent rod at sunset */}
       <div className="absolute inset-0 -z-10">
         <img
           src={imagery.rodBentSunset}
           alt=""
           aria-hidden
-          className="h-full w-full object-cover cinematic-img opacity-30"
+          className="h-full w-full object-cover cinematic-img opacity-25"
         />
         <div
           className="absolute inset-0"
@@ -26,7 +27,7 @@ export function TestimonialsScroll() {
       </div>
 
       <div className="container-wide relative">
-        <div className="grid grid-cols-12 gap-6 md:gap-10 mb-12 md:mb-16">
+        <div className="grid grid-cols-12 gap-6 mb-10 md:mb-16">
           <div className="col-span-12 md:col-span-3">
             <span className="stamp">No. 06 — Word of Mouth</span>
           </div>
@@ -38,52 +39,83 @@ export function TestimonialsScroll() {
           </div>
         </div>
 
-        <div className="grid grid-cols-12 gap-6 md:gap-10 items-start">
-          <div className="col-span-12 md:col-span-2 flex md:flex-col gap-2">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                aria-label={`Show testimonial ${i + 1}`}
-                className="group flex items-center gap-3"
+        {/* Quote + photo grid */}
+        <div className="grid grid-cols-12 gap-4 md:gap-10 items-stretch">
+          {/* Photo — larger on mobile so it's not just text */}
+          <div className="col-span-12 md:col-span-5 lg:col-span-4 order-1 md:order-2">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, scale: 1.02 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1 }}
+                transition={{ duration: 0.7, ease: easings.expoOut }}
+                className="relative aspect-[4/5] overflow-hidden border-2 border-gold/30"
               >
-                <span
-                  className={`block h-px transition-all duration-500 ${
-                    active === i ? "w-12 bg-gold" : "w-6 bg-stone/40 group-hover:bg-stone"
-                  }`}
+                <img
+                  src={t.image}
+                  alt={`Catch from ${t.author}`}
+                  className="absolute inset-0 h-full w-full object-cover cinematic-img"
                 />
-                <span
-                  className={`font-display font-extrabold text-base uppercase tracking-[0.06em] transition-colors duration-500 ${
-                    active === i ? "text-gold" : "text-stone"
-                  }`}
-                >
-                  0{i + 1}
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+                <span className="stamp absolute top-4 left-4 bg-ink/80">
+                  {t.species}
                 </span>
-              </button>
-            ))}
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="block font-mono text-[0.65rem] uppercase tracking-[0.22em] text-gold">
+                    Verified guest
+                  </span>
+                  <span className="block font-display heavy text-paper text-2xl mt-1">
+                    {t.author}
+                  </span>
+                  <span className="block font-mono text-[0.6rem] uppercase tracking-[0.22em] text-bone">
+                    {t.location}
+                  </span>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          <div className="col-span-12 md:col-span-10 relative min-h-[18rem]">
+          {/* Quote */}
+          <div className="col-span-12 md:col-span-7 lg:col-span-8 order-2 md:order-1 flex flex-col">
             <AnimatePresence mode="wait">
               <motion.blockquote
                 key={active}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
+                exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.7, ease: easings.expoOut }}
-                className="font-slab text-paper text-[clamp(1.5rem,3.2vw,2.75rem)] leading-[1.2]"
+                className="flex-1 font-slab text-paper text-[clamp(1.25rem,3vw,2.5rem)] leading-[1.25]"
               >
-                <span className="block text-gold text-5xl mb-4 leading-none">"</span>
-                {testimonials[active].quote}
-                <footer className="mt-8 flex items-center gap-4 font-mono text-xs uppercase tracking-[0.2em] text-stone not-italic font-normal">
-                  <span className="block h-px w-10 bg-gold" />
-                  <span>
-                    {testimonials[active].author}, {testimonials[active].location}
-                  </span>
-                  <span className="ml-auto stamp">{testimonials[active].species}</span>
-                </footer>
+                <span className="block text-gold text-5xl md:text-6xl mb-2 md:mb-4 leading-none">"</span>
+                {t.quote}
               </motion.blockquote>
             </AnimatePresence>
+
+            {/* Counter strip */}
+            <div className="mt-8 md:mt-10 flex items-center gap-3 pt-6 border-t border-rule">
+              {testimonials.map((tt, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  aria-label={`Show testimonial ${i + 1}`}
+                  className="group flex items-center gap-2"
+                >
+                  <span
+                    className={`block h-px transition-all duration-500 ${
+                      active === i ? "w-12 bg-gold" : "w-6 bg-stone/40 group-hover:bg-stone"
+                    }`}
+                  />
+                  <span
+                    className={`font-display font-extrabold text-sm uppercase tracking-[0.06em] transition-colors duration-500 ${
+                      active === i ? "text-gold" : "text-stone"
+                    }`}
+                  >
+                    {tt.species}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { PageHero } from "@/components/sections/PageHero";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { AtmosphericBreak } from "@/components/sections/AtmosphericBreak";
+import { TrophyReel } from "@/components/sections/TrophyReel";
 import { useReveal } from "@/hooks/useReveal";
 import { boat, imagery, pricing, services, whatToBring } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -43,6 +44,14 @@ export default function OpenWater() {
           </div>
         </div>
       </section>
+
+      {/* Trophy reel — open water catches */}
+      <TrophyReel
+        stamp="Open Water · The Wall"
+        headline="What Comes Up"
+        accentLine="From May to October."
+        copy="Walleye, pike, and the days that produced them. Swipe through the recent open-water trophies."
+      />
 
       {/* Atmospheric break — dawn mist */}
       <AtmosphericBreak

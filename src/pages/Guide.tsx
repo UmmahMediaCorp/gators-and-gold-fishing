@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { PageShell } from "@/components/layout/PageShell";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { AtmosphericBreak } from "@/components/sections/AtmosphericBreak";
+import { TrophyReel } from "@/components/sections/TrophyReel";
 import { useReveal } from "@/hooks/useReveal";
 import { brand, guide, imagery } from "@/lib/content";
 import { motion } from "framer-motion";
@@ -97,6 +98,14 @@ export default function Guide() {
           </div>
         </div>
       </section>
+
+      {/* Trophy reel — what 30 years on the water looks like */}
+      <TrophyReel
+        stamp="Rob's Wall · 30 Years"
+        headline="The Days"
+        accentLine="that Built the Boat."
+        copy="A few of the trophies guests have brought to the net under Rob's guidance."
+      />
 
       {/* Atmospheric break — vintage tackle / heritage */}
       <AtmosphericBreak

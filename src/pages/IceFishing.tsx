@@ -2,6 +2,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { PageHero } from "@/components/sections/PageHero";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { AtmosphericBreak } from "@/components/sections/AtmosphericBreak";
+import { TrophyReel } from "@/components/sections/TrophyReel";
 import { useReveal } from "@/hooks/useReveal";
 import { imagery, pricing, services, whatToBringIce } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -98,6 +99,14 @@ export default function IceFishing() {
           </div>
         </div>
       </section>
+
+      {/* Trophy reel — ice fishing focus */}
+      <TrophyReel
+        stamp="Hard Water · Trip Wall"
+        headline="Cold Days,"
+        accentLine="Hot Bites."
+        copy="Heated UTV. Heated tent. Forward-facing flasher. Here's what came up out of the ice."
+      />
 
       {/* Atmospheric break — northern lights */}
       <AtmosphericBreak
